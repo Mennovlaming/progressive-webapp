@@ -1,0 +1,24 @@
+{
+  "name": "progressive-webapp",
+  "version": "1.0.0",
+  "description": "## Inhoudsopgave - Opdracht - Omschrijving - Activity diagram/ontwerp - Code",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mennovlaming/progressive-webapp.git"
+  },
+  "author": "Menno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mennovlaming/progressive-webapp/issues"
+  },
+  "homepage": "https://github.com/Mennovlaming/progressive-webapp#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.2"
+  }
+}

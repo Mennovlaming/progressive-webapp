@@ -1,0 +1,19 @@
+<h1>Rijksmuseum online</h1>
+
+<form>
+        <input type="text" placeholder="Search...">
+        
+      </form>
+{{!-- loop --}}
+<section>
+{{#each kunstwerken}}
+    <article>
+       <img src="{{this.webImage.url}}" alt="">
+       <div class="text">
+            <h2>{{this.title}}</h2>
+            <h3>{{this.principalOrFirstMaker}}</h3>
+            <p>{{this.productionPlaces}}</p>
+       </div>
+    </article>
+{{/each}}
+</section>
