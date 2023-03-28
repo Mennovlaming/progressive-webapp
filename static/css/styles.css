@@ -65,6 +65,16 @@ form input {
     color: white;
 }
 
+.detail {
+    display: flex;
+    flex-direction: column;
+}
+.detail h2, .detail p, .detail h3 {
+    color: white ;
+}
 
-
+.detail img {
+    width: 20em;
+    height: auto;
+}
 
