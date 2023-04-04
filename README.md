@@ -49,3 +49,16 @@ Om te zoeken, moet je achter de URL een query meegeven, die zoekresultaten filte
         const query = req.query.query; 
         const results = kunstwerken.filter(item => item.principalOrFirstMaker.toLowerCase().includes(query));
 ```
+### Handlebars pagina
+Zoals te zien bij de functie hierboven, zet ik de gefetchte data in het variabele 'kunstwerken'. Deze geef ik (in dit voorbeeld) mee aan de pagina 'page'. Vervolgens gebeurd er dit in de page.handlebars pagina: 
+Hij loopt hier door de 'kunstwerken' heen en voor elk kunstwerk genereerd hij HTML
+```handlebars
+ {{#each kunstwerk}}
+        <div class="detail">
+            <h2>{{this.title}}</h2>
+            <img src="{{this.webImage.url}}" alt="" loading="lazy">
+            <h3>{{this.principalOrFirstMaker}}</h3>
+            <p>{{this.productionPlaces}}</p>
+        </div>
+{{/each}}
+```
