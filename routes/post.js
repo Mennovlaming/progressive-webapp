@@ -8,9 +8,8 @@ router.get('/', async (req, res) => {
     .then(json => {
         // fetch data ometten in json, in variable zetten
         const kunstwerken = json.artObjects
-        // geef kunstwerken mee aan de pagina test, die haal je hier op
-        res.render("test", { kunstwerken });
-        
+        // geef kunstwerken mee aan de pagina page, die haal je hier op
+        res.render("page", { kunstwerken });
     });
 });
 
@@ -36,7 +35,7 @@ router.get('/search', async (req, res) => {
         const kunstwerken = json.artObjects;
         const query = req.query.query; // Read the search term from the query parameter
         const results = kunstwerken.filter(item => item.principalOrFirstMaker.toLowerCase().includes(query)); // Filter the data based on the search term
-        // geef kunstwerken mee aan de pagina test, die haal je hier op
+        // geef kunstwerken mee aan de pagina page, die haal je hier op
         res.render("search", { results });
         
     });

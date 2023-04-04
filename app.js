@@ -16,7 +16,8 @@ app.use('/search', router);
 
 
 app.get('/search', (req, res) => {
-  const query = req.query.query; // Read the search term from the query parameter
+  const query = req.query.query; 
+  // Read the search term from the query parameter
   // Perform the search operation using the query term
   // ...
 });
