@@ -21,7 +21,7 @@ Het Rijksmuseum heeft een publieke API die door iedereen gebruikt kan worden, me
 <img width="766" alt="image" src="https://user-images.githubusercontent.com/24406793/223833739-998aed4a-0fbc-4753-b22d-2738b042fcc0.png">
 
 
-## Code
+## Code, van WAFS naar PWA
 
 ### Project setup
 Het project heeft de standaard indeling van een web app. Ik maak gebruik van een NodeJS backend en van express samen met handlebars om HTML templates te genereren. 
