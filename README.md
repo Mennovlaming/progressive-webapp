@@ -62,6 +62,9 @@ Hij loopt hier door de 'kunstwerken' heen en voor elk kunstwerk genereerd hij HT
         </div>
 {{/each}}
 ```
+## Manifest JS
+Om ervoor te zorgen dat de PWA gedownload kan worden en meer informatie geeft, heb ik een manifest,js gemaakt. Hierin staat informatie over de site.
+
 ## Service worker
 Om de (tot zo ver) webapp te laten werken als een progressive webapp, maak ik gebruik van een service worker. De service worker laadt ik in mijn normale javascript bestand, of in script tags in mijn HTML.
 
@@ -137,3 +140,4 @@ De site was erg langzaam, dit kwam door de grote images vie de API meegaf, ook l
 ```
 <img width="866" alt="Screenshot 2023-04-04 at 10 47 22" src="https://user-images.githubusercontent.com/24406793/229755872-943db968-59cb-47c7-89d9-8e93b17f0c3d.png">
 
+Als laatste heb ik de PWA online gezet met https://www.cyclic.sh 
