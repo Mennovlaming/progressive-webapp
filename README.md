@@ -1,4 +1,4 @@
-# Webapp from scratch Rijksmuseum
+# Progressive webapp Rijksmuseum
 
 ## Inhoudsopgave
 - Opdracht
@@ -7,12 +7,14 @@
 - Code
 
 ## Opdracht
-Bij de minor web design en development kregen wij de opracht; maak een online gebruikerservaring voor het Rijksmuseum. 
+Bij het vak progressive webapp van de minor web design en development kregen wij de opracht; maak een online gebruikerservaring voor het Rijksmuseum. 
 De bedoeling is dat gebruikers online kunst kunnen bekijken. Met een API kan er data van het Rijksmuseum worden geladen die vervolgens op het scherm getoont moet worden.
+
+Voor het vak Web App from scratch hadden wij deze opdracht uitgewerkt, maar dan vanaf de kant van de client. Nu was het bij progressive webapp de bedoeling om de applicatie van de client naar de server te verplaatsen. 
 
 Het Rijksmuseum heeft een publieke API die door iedereen gebruikt kan worden, meer informatie vind je [Hier](https://data.rijksmuseum.nl/object-metadata/api/).
 
-##Activity diagram/ ontwerp
+## Activity diagram/ ontwerp
 
 <img width="538" alt="image" src="https://user-images.githubusercontent.com/24406793/223833584-f06d77d2-d3a7-4196-bf64-40b307f04a2f.png">
 
@@ -21,69 +23,29 @@ Het Rijksmuseum heeft een publieke API die door iedereen gebruikt kan worden, me
 
 ## Code
 
-### data fetch
+### Project setup
+Het project heeft de standaard indeling van een web app. Ik maak gebruik van een NodeJS backend en van express samen met handlebars om HTML templates te genereren. 
+
+De basis van de app is de app.js. vanuit hier gaat een route naar post.js. Vanuit hier worden de fetches en aanvragen naar de API gedaan.
+
+### data fetch, render en search 
 ```Javascript
-function fetchData (){
-    fetch(apiURL)
-                    .then(response => response.json())
-                    .then(data => {
-                     
-                     loader.style.display = 'none';
-
-                    // changeHTML(data) 
-                    console.log(data)
-                        // Set global state of articles;
-                        window.articles = data.artObjects;
-                        renderData(window.articles);
-                   
-                    })
-
-                    .catch(error => {
-                        // Handle errors
-                        console.error(error);
-                        // window.alert("De data kan niet geladen worden, probeer het later opnieuw");
-                        // Hide the loading state
-                          loader.style.display = 'none';
-                      });
-}
-```
-
-### data render
-```Javascript
-function renderData (data) {
-    // Clear eerst, zodat er geen dubbele items gerenderd worden
-    clear();
-    for(let i = 0; i <= data.length; i++) {
-        section.insertAdjacentHTML ("beforeend", `
-        <a href='#${data[i].id}'>
-            <article>
-                <img src="${data[i].webImage.url}" />
-                    <div class="text">
-                            <h2>${data[i].title}</h2>
-                            <h3>${data[i].principalOrFirstMaker}</h3>
-                            <!-- <p>${data[i].productionPlaces}</p> -->
-                            <p>locatie</p>
-                    </div>
-            </article>
-        </a>
-        `)
-        
-    }
-    
-}
+router.get('/', async (req, res) => {
+    await fetch ('https://www.rijksmuseum.nl/api/nl/collection?key=wJjmayJK')
+    //Standaard fetcht hij 10 resultaten, check api
+    .then(res => res.json())
+    .then(json => {
+        // fetch data ometten in json, in variable zetten
+        const kunstwerken = json.artObjects
+        // geef kunstwerken mee aan de pagina page, die haal je hier op
+        res.render("page", { kunstwerken });
+    });
+});
 ```
 
 ### Zoeken
+Om te zoeken, moet je achter de URL een query meegeven, die zoekresultaten filtert. Dit kan met deze regels code (toegevoegd aan de originele get)
 ```Javascript 
-window.handleSearchChange = (val) => {
-    const filteredArticles = articles.filter(x => 
-        //x = zoektermen toLowerCase
-        
-        // x.productionPlaces.toLowerCase().includes(val.toLowerCase()) ||
-        x.principalOrFirstMaker.toLowerCase().includes(val.toLowerCase()) ||
-        x.title.toLowerCase().includes(val.toLowerCase())
-        );
-        
-    renderData(filteredArticles);
-}
+        const query = req.query.query; 
+        const results = kunstwerken.filter(item => item.principalOrFirstMaker.toLowerCase().includes(query));
 ```
