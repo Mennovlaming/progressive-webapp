@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     .then(res => res.json())
     .then(json => {
         // fetch data ometten in json, in variable zetten
-        const kunstwerken = json.artObjects;
+        const kunstwerken = json.artObjects
         // geef kunstwerken mee aan de pagina test, die haal je hier op
         res.render("test", { kunstwerken });
         
