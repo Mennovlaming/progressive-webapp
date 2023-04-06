@@ -135,9 +135,17 @@ Toen ik de webiste voor de eerste keer ging testen op de perfomance, kwam ik hie
 
 De site was erg langzaam, dit kwam door de grote images vie de API meegaf, ook lazy loading maakte nauwelijks verschil. Om de images in een gefixte grootte te laten genereren, zet ik achter de image url 400, zodat de image kleiner is dan het origineel, dit helpt enorm met de performance.
 
+
 ```handlebars
 <img src="{{this.webImage.url}}400n" alt="" loading="lazy">
 ```
 <img width="866" alt="Screenshot 2023-04-04 at 10 47 22" src="https://user-images.githubusercontent.com/24406793/229755872-943db968-59cb-47c7-89d9-8e93b17f0c3d.png">
 
 Als laatste heb ik de PWA online gezet met https://www.cyclic.sh 
+
+## Toekomstige toevoegingen
+Als ik meer tijd had, zou ik nog wat meer dingen willen toevoegen in de pwa:
+1. Een knop waarmee je meer kunstwerken kan laden, door een atribute mee te geven aan de API URL kan je meer dan 10 kunstwerken laden.
+2. Code compressen, met UglifyJS en CSS compresion wou ik eigenlijk nog mijn code compressen, ook goed voor de performance.
+3. De zoekfunctie nog wat uitgebreider maken.
+4. Styling leuker maken
