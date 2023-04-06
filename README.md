@@ -141,6 +141,14 @@ De site was erg langzaam, dit kwam door de grote images vie de API meegaf, ook l
 ```
 <img width="866" alt="Screenshot 2023-04-04 at 10 47 22" src="https://user-images.githubusercontent.com/24406793/229755872-943db968-59cb-47c7-89d9-8e93b17f0c3d.png">
 
+### Compression
+
+Compression is een npm package waarmee je de static files kan verkleinen, bestanden zoals javascript, CSS en andere client side bestanden worden gecompressed. 
+
+```Javascript
+const compression = require("compression");
+app.use(compression());
+```
 Als laatste heb ik de PWA online gezet met https://www.cyclic.sh 
 
 ## Toekomstige toevoegingen
